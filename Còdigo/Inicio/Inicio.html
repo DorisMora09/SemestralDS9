@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hilo&Huella – Reparación de Calzado</title> 
+  <link rel="stylesheet" href="style.css">
+</head> 
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="source/logo.png" alt="Hilo&Huella Logo" />
+        <span style="display:none">👞</span>
+        Hilo&Huella
+      </div>
+      <div class="auth-buttons">
+        <button class="btn btn-secondary" onclick="openModal('login')">Iniciar Sesión</button>
+        <button class="btn btn-primary" onclick="window.location.href='/Registro/Registro.html'">Registrarse</button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegación -->
+  <nav class="nav">
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="hero-carousel">
+      <img src="source/Imagen1.png" alt="Imagen 1" />
+      <img src="source/imagen2.png" alt="Imagen 2" />
+      <div class="hero-placeholder">
+        <div>
+          <div>👞</div>
+          <div>Hilo&Huella</div>
+          <div>Reparación de Calzado</div>
+        </div>
+      </div>
+      <div class="hero-placeholder">
+        <div>
+          <div>✂️</div>
+          <div>Servicio a Domicilio</div>
+          <div>Reparación de Ropa</div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-indicators">
+      <div class="indicator active" onclick="goToSlide(0)"></div>
+      <div class="indicator" onclick="goToSlide(1)"></div>
+    </div>
+  </section>
+
+  <!-- Contenido Principal -->
+  <main class="main-content">
+    <div class="decorative-border">
+      <img src="source/separador.png" alt="Separador decorativo" />
+    </div>
+
+    <p class="intro-text">
+      Página especializada en la reparación de ropa y calzado a domicilio. Combinamos oficio y detalle para dar nueva vida a tus prendas y zapatos, con un servicio cómodo, confiable y a tu puerta. Te ayudaremos a extender la historia de lo que usas, reduciendo el desperdicio y apostando por la sostenibilidad con estilo.
+    </p>
+
+    <div class="decorative-border">
+      <img src="source/separador.png" alt="Separador decorativo" />
+    </div>
+
+    <!-- Servicios -->
+    <section class="services" id="servicios">
+      <h2>Servicios</h2>
+
+      <!-- Zapatería -->
+      <div class="service-category">
+        <h3>Zapatería</h3>
+        <div class="service-carousel">
+          <button class="carousel-btn prev" onclick="scrollCarousel('zapateria',-1)">‹</button>
+          <div class="service-grid" id="zapateria">
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">
+                <img src="source/shoe-repair.jpg" alt="Reparación de zapatos" />
+                <div style="display:none;">👞</div>
+              </div>
+              <h4>Reparación de Zapatos</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />3 días</div>
+                <div class="service-price">20.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">
+                <img src="source/sneaker-repair.jpg" alt="Reparación de tenis" />
+                <div style="display:none;">👟</div>
+              </div>
+              <h4>Reparación de Tenis</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />3 días</div>
+                <div class="service-price">20.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">
+                <img src="source/boot-repair.jpg" alt="Reparación de botas" />
+                <div style="display:none;">👢</div>
+              </div>
+              <h4>Reparación de Botas</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />3 días</div>
+                <div class="service-price">20.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">🥿</div>
+              <h4>Reparación de Mocasines</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />2 días</div>
+                <div class="service-price">18.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">👠</div>
+              <h4>Reparación de Tacones</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />2 días</div>
+                <div class="service-price">25.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">🩴</div>
+              <h4>Reparación de Sandalias</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />1 día</div>
+                <div class="service-price">15.00 $</div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-btn next" onclick="scrollCarousel('zapateria',1)">›</button>
+        </div>
+      </div>
+
+      <!-- Modistería -->
+      <div class="service-category">
+        <h3>Modistería</h3>
+        <div class="service-carousel">
+          <button class="carousel-btn prev" onclick="scrollCarousel('modisteria',-1)">‹</button>
+          <div class="service-grid" id="modisteria">
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">
+                <img src="source/dress-repair.jpg" alt="Reparación de vestidos" />
+                <div style="display:none;">👗</div>
+              </div>
+              <h4>Reparación de Vestidos</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />3 días</div>
+                <div class="service-price">20.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">
+                <img src="source/suit-repair.jpg" alt="Reparación de trajes" />
+                <div style="display:none;">👔</div>
+              </div>
+              <h4>Reparación de Trajes</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />3 días</div>
+                <div class="service-price">20.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">
+                <img src="source/blouse-repair.jpg" alt="Reparación de blusas" />
+                <div style="display:none;">👚</div>
+              </div>
+              <h4>Reparación de Blusas</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />3 días</div>
+                <div class="service-price">20.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">👖</div>
+              <h4>Reparación de Pantalones</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />2 días</div>
+                <div class="service-price">18.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">🧥</div>
+              <h4>Reparación de Chaquetas</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />4 días</div>
+                <div class="service-price">25.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">👕</div>
+              <h4>Reparación de Camisas</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />2 días</div>
+                <div class="service-price">15.00 $</div>
+              </div>
+            </div>
+            <div class="service-card" onclick="selectService(this)">
+              <div class="service-image">🧣</div>
+              <h4>Reparación de Accesorios</h4>
+              <div class="service-details">
+                <div class="service-time">Tiempo aprox.<br />1 día</div>
+                <div class="service-price">12.00 $</div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-btn next" onclick="scrollCarousel('modisteria',1)">›</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="decorative-border">
+        <img src="/Inicio/source/separador.png" alt="Separador decorativo" />
+      </div>
+
+    <!-- Cuenta Cliente -->
+    <section class="account-section">
+      <div class="account-content">
+        <div class="account-info">
+          <h2>Crea tu cuenta</h2>
+          <p>Solicita reparaciones de ropa y calzado desde la comodidad de tu hogar. Agenda, rastrea y paga tus servicios de forma fácil y segura.</p>
+          <button class="register-btn" onclick="openModal('register')">Regístrate</button>
+        </div>
+        <div class="account-visual">
+          <div class="phone-mockup">📱</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="decorative-border"></div>
+
+    <!-- Proceso -->
+    <section class="process-section">
+      <h2>Nuestro Proceso</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">Paso 1:</div>
+          <div class="step-title">Busca el servicio que deseas</div>
+          <div class="step-image">🔍</div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">Paso 2:</div>
+          <div class="step-title">Ingresa en el buscador qué tipo de arreglo necesitas</div>
+          <div class="step-image">✏️</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="decorative-border">
+        <img src="/Inicio/source/separador.png" alt="Separador decorativo" />
+      </div> 
+
+    <!-- Contacto -->
+    <section id="contacto">
+      <h2>Escríbenos, te leemos</h2>
+      <form>
+        <div>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+        <div>
+          <label for="correo">Correo</label>
+          <input type="email" id="correo" name="correo" required />
+        </div>
+        <div>
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" name="descripcion" rows="5" required></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Modal Login/Registro -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Iniciar Sesión</h2>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="modal-form">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-group" id="name-group" style="display:none">
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" name="name" />
+        </div>
+        <div class="form-group" id="phone-group" style="display:none">
+          <label for="phone">Teléfono:</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+        <button type="submit" class="btn btn-primary">Continuar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <img src="source/logo.png" alt="Hilo&Huella Logo" />
+      <span>Hilo&Huella</span>
+    </div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#faq">FAQ</a>
+      <a href="#">Rastrea tu pedido</a>
+    </nav>
+    <div>
+      <div>Contáctanos</div>
+      <div><a href="mailto:correoejemplo@hotmail.com">correoejemplo@hotmail.com</a></div>
+      <div>Tel: 000 - 000</div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body> 
+
+
+</html>
