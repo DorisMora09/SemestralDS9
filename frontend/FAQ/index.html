@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - Hilo&Huella</title>
+    <style>
+        /* ───── Reset & Base ─────────────────────────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ───── Header ──────────────────────────────── */
+        .header {
+            background: linear-gradient(135deg, #e8e8e8 0%, #fff 100%);
+            padding: 15px 0;
+            border-bottom: 2px solid #fff;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #6b4ba6;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        /* ───── Botones de autenticación ───────────── */
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary {
+            background: #4441A6;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background: #777;
+        }
+
+        .btn-primary {
+            background: #51318b;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #5a3d8a;
+        }
+
+        /* ───── Navegación ─────────────────────────── */
+        .nav {
+            background: #4441A6;
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            border-bottom-color: #fff;
+        }
+
+        /* ───── Main Content ──────────────────────── */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faq-header h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .faq-header p {
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ───── Búsqueda ──────────────────────────── */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            font-family: Georgia, serif;
+            background: #f8f8f8;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #6b4ba6;
+            box-shadow: 0 0 0 3px rgba(107, 75, 166, 0.1);
+            background: #fff;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+        }
+
+        /* ───── Categorías FAQ ────────────────────── */
+        .faq-categories {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .category-nav {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 12px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .category-nav h3 {
+            font-size: 18px;
+            color: #6b4ba6;
+            margin-bottom: 15px;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-list li {
+            margin-bottom: 8px;
+        }
+
+        .category-list a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .category-list a:hover,
+        .category-list a.active {
+            background: #6b4ba6;
+            color: #fff;
+        }
+
+        /* ───── Contenido FAQ ─────────────────────── */
+        .faq-content {
+            background: #fff;
+        }
+
+        .faq-category {
+            margin-bottom: 40px;
+        }
+
+        .faq-category.hidden {
+            display: none;
+        }
+
+        .faq-category h2 {
+            font-size: 24px;
+            color: #6b4ba6;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: #fff;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: Georgia, serif;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8f8f8;
+        }
+
+        .faq-question.active {
+            background: #6b4ba6;
+            color: #fff;
+        }
+
+        .faq-icon {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer ul {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .faq-answer li {
+            margin-bottom: 5px;
+        }
+
+        /* ───── Sección de contacto rápido ──────────── */
+        .quick-contact {
+            background: linear-gradient(135deg, #6b4ba6 0%, #4441A6 100%);
+            color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .quick-contact h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .quick-contact p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .contact-btn {
+            background: #fff;
+            color: #6b4ba6;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* ───── Footer ─────────────────────────────── */
+        footer {
+            background-color: #d3d3d3;
+            padding: 20px 40px;
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            font-family: Georgia, serif;
+            font-size: 14px;
+            color: #333;
+        }
+
+        footer>div:first-child {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        footer>div:first-child img {
+            height: 40px;
+        }
+
+        footer nav {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 10px;
+        }
+
+        footer nav a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        footer nav a:hover {
+            text-decoration: underline;
+        }
+
+        footer>div:last-child {
+            text-align: right;
+            min-width: 220px;
+            margin-bottom: 10px;
+        }
+
+        footer>div:last-child a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        footer>div:last-child a:hover {
+            text-decoration: underline;
+        }
+
+        /* ───── Responsive ─────────────────────────── */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .faq-categories {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .category-nav {
+                position: static;
+                order: 2;
+            }
+
+            .faq-content {
+                order: 1;
+            }
+
+            .faq-header h1 {
+                font-size: 28px;
+            }
+
+            .main-content {
+                padding: 30px 15px;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            footer>div:last-child {
+                text-align: center;
+                min-width: auto;
+            }
+        }
+
+        /* ───── Animaciones ─────────────────────────── */
+        .faq-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .faq-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .faq-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .faq-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .faq-item:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="source/logo.png" alt="Hilo&Huella Logo" />
+                Hilo&Huella
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-primary" id="authBtn">
+                    <span class="auth-text">Mi Cuenta</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#faq" class="active">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="faq-header">
+            <h1>Preguntas Frecuentes</h1>
+            <p>Encuentra respuestas a las dudas más comunes sobre nuestros servicios de reparación de ropa y calzado. Si
+                no encuentras lo que buscas, no dudes en contactarnos.</p>
+        </div>
+
+        <!-- Búsqueda -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Busca tu pregunta aquí..." id="searchInput">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="faq-categories">
+            <!-- Navegación de categorías -->
+            <nav class="category-nav">
+                <h3>Categorías</h3>
+                <ul class="category-list">
+                    <li><a href="#" class="category-link active" data-category="all">Todas las preguntas</a></li>
+                    <li><a href="#" class="category-link" data-category="ropa">Reparación de Ropa</a></li>
+                    <li><a href="#" class="category-link" data-category="calzado">Reparación de Calzado</a></li>
+                    <li><a href="#" class="category-link" data-category="precios">Precios y Pagos</a></li>
+                    <li><a href="#" class="category-link" data-category="tiempos">Tiempos de Entrega</a></li>
+                    <li><a href="#" class="category-link" data-category="cuidados">Cuidados y Mantenimiento</a></li>
+                </ul>
+            </nav>
+
+            <!-- Contenido FAQ -->
+            <div class="faq-content">
+                <!-- Reparación de Ropa -->
+                <div class="faq-category" data-category="ropa">
+                    <h2>Reparación de Ropa</h2>
+
+                    <div class="faq-item" data-keywords="coser reparar agujero tela">
+                        <button class="faq-question">
+                            ¿Qué tipos de reparaciones de ropa realizan?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Realizamos una amplia variedad de reparaciones de ropa, incluyendo:</p>
+                            <ul>
+                                <li>Reparación de cremalleras</li>
+                                <li>Zurcido de agujeros y roturas</li>
+                                <li>Ajustes de talla (acortar, estrechar, ensanchar)</li>
+                                <li>Reemplazo de botones</li>
+                                <li>Reparación de costuras</li>
+                                <li>Parches invisibles</li>
+                                <li>Refuerzo de zonas desgastadas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="tela tipo material seda lana algodón">
+                        <button class="faq-question">
+                            ¿Trabajan con todo tipo de telas?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, trabajamos con la mayoría de tipos de tela:</p>
+                            <ul>
+                                <li>Algodón y mezclas de algodón</li>
+                                <li>Lana y cachemira</li>
+                                <li>Seda natural y sintética</li>
+                                <li>Denim y telas vaqueras</li>
+                                <li>Cuero y piel sintética</li>
+                                <li>Telas técnicas y deportivas</li>
+                            </ul>
+                            <p>Para telas muy delicadas o especiales, realizamos una evaluación previa para garantizar
+                                el mejor resultado.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="cremallera zipper rota no cierra">
+                        <button class="faq-question">
+                            Mi cremallera no cierra bien, ¿se puede reparar?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>En la mayoría de los casos sí. Dependiendo del problema:</p>
+                            <ul>
+                                <li><strong>Cursor atascado:</strong> Limpieza y lubricación</li>
+                                <li><strong>Dientes rotos:</strong> Reparación localizada o reemplazo</li>
+                                <li><strong>Cursor roto:</strong> Reemplazo del cursor</li>
+                                <li><strong>Cremallera completamente dañada:</strong> Reemplazo completo</li>
+                            </ul>
+                            <p>Evaluamos cada caso individualmente para ofrecer la mejor solución.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reparación de Calzado -->
+                <div class="faq-category" data-category="calzado">
+                    <h2>Reparación de Calzado</h2>
+
+                    <div class="faq-item" data-keywords="zapatos tacón suela reparar cambiar">
+                        <button class="faq-question">
+                            ¿Qué servicios de reparación de calzado ofrecen?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Nuestros servicios de calzado incluyen:</p>
+                            <ul>
+                                <li>Cambio de suelas completas</li>
+                                <li>Reparación de tacones</li>
+                                <li>Cambio de medias suelas</li>
+                                <li>Reparación de costuras</li>
+                                <li>Cambio de cremalleras en botas</li>
+                                <li>Reparación de cuero agrietado</li>
+                                <li>Refuerzo de puntas y talones</li>
+                                <li>Ajuste de calce</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="tipo zapato bota sandalia deportivo">
+                        <button class="faq-question">
+                            ¿Reparan todo tipo de calzado?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Trabajamos con la mayoría de tipos de calzado:</p>
+                            <ul>
+                                <li>Zapatos de cuero clásicos</li>
+                                <li>Botas y botines</li>
+                                <li>Zapatos deportivos y sneakers</li>
+                                <li>Sandalias y zapatos de verano</li>
+                                <li>Zapatos de tacón</li>
+                                <li>Calzado de trabajo y seguridad</li>
+                            </ul>
+                            <p>Para calzado muy especializado o de materiales poco comunes, recomendamos una consulta
+                                previa.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="suela gastada cambiar nueva">
+                        <button class="faq-question">
+                            ¿Cuándo es necesario cambiar toda la suela?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Recomendamos cambio completo de suela cuando:</p>
+                            <ul>
+                                <li>El desgaste afecta más del 70% de la suela</li>
+                                <li>Hay agujeros que atraviesan completamente</li>
+                                <li>La estructura interna está comprometida</li>
+                                <li>Existe desgaste muy irregular</li>
+                            </ul>
+                            <p>En muchos casos, una media suela puede ser suficiente y más económica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Precios y Pagos -->
+                <div class="faq-category" data-category="precios">
+                    <h2>Precios y Pagos</h2>
+
+                    <div class="faq-item" data-keywords="precio costo cuanto vale reparación">
+                        <button class="faq-question">
+                            ¿Cómo calculan los precios de las reparaciones?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Los precios se calculan considerando:</p>
+                            <ul>
+                                <li>Tipo y complejidad de la reparación</li>
+                                <li>Materiales necesarios</li>
+                                <li>Tiempo de trabajo requerido</li>
+                                <li>Técnicas especiales necesarias</li>
+                            </ul>
+                            <p>Ofrecemos presupuesto gratuito antes de realizar cualquier trabajo. Los precios se
+                                comunican claramente y no hay costos ocultos.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="pago efectivo tarjeta transferencia">
+                        <button class="faq-question">
+                            ¿Qué métodos de pago aceptan?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Aceptamos diversos métodos de pago:</p>
+                            <ul>
+                                <li>Efectivo</li>
+                                <li>Tarjetas de débito y crédito</li>
+                                <li>Transferencias bancarias</li>
+                                <li>Pagos móviles</li>
+                            </ul>
+                            <p>El pago se realiza al momento de recoger la prenda reparada.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="presupuesto gratis evaluación costo">
+                        <button class="faq-question">
+                            ¿El presupuesto tiene algún costo?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No, nuestros presupuestos son completamente gratuitos. Evaluamos tu prenda y te
+                                informamos:</p>
+                            <ul>
+                                <li>Tipo de reparación necesaria</li>
+                                <li>Costo total del trabajo</li>
+                                <li>Tiempo estimado de entrega</li>
+                                <li>Recomendaciones adicionales</li>
+                            </ul>
+                            <p>Solo pagas si decides proceder con la reparación.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tiempos de Entrega -->
+                <div class="faq-category" data-category="tiempos">
+                    <h2>Tiempos de Entrega</h2>
+
+                    <div class="faq-item" data-keywords="tiempo entrega demora días">
+                        <button class="faq-question">
+                            ¿Cuánto tiempo tardan las reparaciones?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Los tiempos varían según el tipo de reparación:</p>
+                            <ul>
+                                <li><strong>Reparaciones simples:</strong> 2-3 días (botones, dobladillos)</li>
+                                <li><strong>Reparaciones medias:</strong> 5-7 días (cremalleras, zurcidos)</li>
+                                <li><strong>Reparaciones complejas:</strong> 10-15 días (cambio de suelas, ajustes
+                                    mayores)</li>
+                                <li><strong>Trabajos especiales:</strong> Hasta 3 semanas</li>
+                            </ul>
+                            <p>Te daremos un tiempo estimado específico al recibir tu prenda.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="urgente rápido express mismo día">
+                        <button class="faq-question">
+                            ¿Ofrecen servicio express o urgente?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, ofrecemos servicio express con las siguientes condiciones:</p>
+                            <ul>
+                                <li>Disponible para reparaciones simples y medias</li>
+                                <li>Costo adicional del 50% sobre el precio normal</li>
+                                <li>Entrega en 24-48 horas</li>
+                                <li>Sujeto a disponibilidad</li>
+                            </ul>
+                            <p>Consulta disponibilidad al momento de dejar tu prenda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuidados y Mantenimiento -->
+                <div class="faq-category" data-category="cuidados">
+                    <h2>Cuidados y Mantenimiento</h2>
+
+                    <div class="faq-item" data-keywords="cuidar mantener durar más prenda">
+                        <button class="faq-question">
+                            ¿Cómo puedo hacer que mis prendas duren más?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Recomendaciones para prolongar la vida de tus prendas:</p>
+                            <ul>
+                                <li>Lee y sigue las etiquetas de cuidado</li>
+                                <li>Rota el uso de tus prendas favoritas</li>
+                                <li>Almacena correctamente (perchas adecuadas, doblado apropiado)</li>
+                                <li>Trata las manchas inmediatamente</li>
+                                <li>Realiza mantenimiento preventivo</li>
+                                <li>Usa productos de limpieza adecuados para cada material</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="prevenir reparación cuidado zapatos">
+                        <button class="faq-question">
+                            ¿Cómo prevenir daños en el calzado?
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Para mantener tu calzado en buen estado:</p>
+                            <ul>
+                                <li>Usa hormas o papel al guardarlos</li>
+                                <li>Alterna pares para permitir que se sequen</li>
+                                <li>Limpia regularmente con productos apropiados</li>
+                                <li>Protege con sprays impermeabilizantes</li>
+                                <li>Revisa periódicamente suelas y costuras</li>
+                                <li>Usa calzador para evitar dañar el talón</li>
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensaje cuando no hay resultados -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <h3>No se encontraron resultados</h3>
+                    <p>No pudimos encontrar preguntas que coincidan con tu búsqueda. Prueba con otros términos o
+                        contacta con nosotros directamente.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de contacto rápido -->
+        <div class="quick-contact">
+            <h3>¿No encontraste lo que buscabas?</h3>
+            <p>Estamos aquí para ayudarte. Contáctanos directamente y resolveremos todas tus dudas.</p>
+            <a href="#contacto" class="contact-btn">Contactar Soporte</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <img src="source/logo.png" alt="Hilo&Huella Logo" />
+            <span>Hilo&Huella</span>
+        </div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#faq">FAQ</a>
+            <a href="#">Rastrea tu pedido</a>
+        </nav>
+        <div>
+            <div>Contáctanos</div>
+            <div><a href="mailto:correoejemplo@hotmail.com">correoejemplo@hotmail.com</a></div>
+            <div>Tel: 000 - 000</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

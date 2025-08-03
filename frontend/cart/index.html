@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="min-h-screen bg-gray-50 py-8">
+        <!-- Empty cart message (initially hidden) -->
+        <div id="empty-cart" class="max-w-4xl mx-auto px-4" style="display: none;">
+            <div class="text-center py-16">
+                <i class="fas fa-shopping-bag text-6xl text-gray-400 mb-4"></i>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Tu carrito está vacío</h2>
+                <p class="text-gray-600 mb-6">Parece que no has agregado ningún producto a tu carrito.</p>
+                <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    Continuar Comprando
+                </button>
+            </div>
+        </div>
+
+        <!-- Main cart content -->
+        <div id="cart-content" class="max-w-6xl mx-auto px-4">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Carrito de Compras</h1>
+                <p class="text-gray-600" id="items-count">3 artículos en tu carrito</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Cart Items -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold mb-6">Artículos</h2>
+                            
+                            <div id="cart-items" class="space-y-6">
+                                <!-- Items will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coupon Section -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 mt-6 p-6">
+                        <h3 class="text-lg font-semibold mb-4">Código de Descuento</h3>
+                        
+                        <div id="applied-coupon" class="coupon-applied" style="display: none;">
+                            <div class="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg p-4">
+                                <div>
+                                    <span class="font-semibold text-green-800" id="coupon-name">Cupón aplicado</span>
+                                    <p class="text-sm text-green-600" id="coupon-description"></p>
+                                </div>
+                                <button id="remove-coupon" class="text-red-500 hover:text-red-700 font-medium">
+                                    Remover
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="coupon-input" class="coupon-input">
+                            <div class="flex space-x-3">
+                                <input
+                                    type="text"
+                                    id="coupon-code"
+                                    placeholder="Ingresa tu código de cupón"
+                                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                />
+                                <button
+                                    id="apply-coupon"
+                                    class="px-6 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
+                                >
+                                    Aplicar
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-gray-500 mt-2">
+                            Códigos de prueba: "descuento10" (10% descuento) o "enviogratis"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-6">
+                        <h2 class="text-xl font-semibold mb-6">Resumen del Pedido</h2>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span class="font-semibold" id="subtotal">$0.00</span>
+                            </div>
+                            
+                            <div id="discount-row" class="flex justify-between text-green-600" style="display: none;">
+                                <span>Descuento</span>
+                                <span id="discount">-$0.00</span>
+                            </div>
+                            
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">
+                                    Envío <span id="free-shipping-label" class="text-green-600 text-sm" style="display: none;">(Gratis)</span>
+                                </span>
+                                <span class="font-semibold" id="shipping">$12.99</span>
+                            </div>
+                            
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Impuestos</span>
+                                <span class="font-semibold" id="tax">$0.00</span>
+                            </div>
+                            
+                            <div class="border-t pt-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold">Total</span>
+                                    <span class="text-2xl font-bold text-blue-600" id="total">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="../payment/" class="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2 mb-4">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Proceder al Pago</span></a>
+                        
+                        <a href="../service/" class="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2 mb-4">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Continuar Compra</span></a>
+                            
+                        
+                        <!-- Guarantees -->
+                        <div class="mt-6 space-y-3">
+                            <div class="flex items-center space-x-3 text-sm text-gray-600">
+                                <i class="fas fa-truck"></i>
+                                <span>Envío gratis en pedidos de $75+</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-sm text-gray-600">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Garantía de devolución de 30 días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

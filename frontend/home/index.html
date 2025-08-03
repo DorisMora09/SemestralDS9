@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hilo&Huella – Reparación de Calzado</title> 
+  <link rel="stylesheet" href="style.css">
+</head> 
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+        <div class="logo">
+            <img src="source/logo.png" alt="Hilo&Huella Logo" />
+            Hilo&Huella
+        </div>
+        <div class="auth-buttons">
+            <button class="btn btn-primary" id="authBtn" onclick="window.location.href='../register'">
+                <span class="auth-text">Mi Cuenta</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+  <!-- Navegación -->
+  <nav class="nav">
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="hero-carousel">
+      <img src="source/imagen2.png" alt="Imagen 1" />
+      <img src="source/Imagen1.webp" alt="Imagen 2" />
+      <div class="hero-placeholder">
+        <div>
+          <div>Hilo&Huella</div>
+          <div>Reparación de Calzado</div>
+        </div>
+      </div>
+      <div class="hero-placeholder">
+        <div>
+          <div>Servicio a Domicilio</div>
+          <div>Reparación de Ropa</div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-indicators">
+      <div class="indicator active" onclick="goToSlide(0)"></div>
+      <div class="indicator" onclick="goToSlide(1)"></div>
+    </div>
+  </section>
+
+  <!-- Contenido Principal -->
+  <main class="main-content">
+    <div class="decorative-border">
+      <img src="source/separador.png" alt="Separador decorativo" />
+    </div>
+
+    <p class="intro-text">
+      Página especializada en la reparación de ropa y calzado a domicilio. Combinamos oficio y detalle para dar nueva vida a tus prendas y zapatos, con un servicio cómodo, confiable y a tu puerta. Te ayudaremos a extender la historia de lo que usas, reduciendo el desperdicio y apostando por la sostenibilidad con estilo.
+    </p>
+
+    <div class="decorative-border">
+        <img src="source/separador.png" alt="Separador decorativo" />
+      </div>
+
+    <!-- Cuenta Cliente -->
+    <section class="account-section">
+      <div class="account-content">
+        <div class="account-info">
+          <h2>Crea tu cuenta</h2>
+          <p>Solicita reparaciones de ropa y calzado desde la comodidad de tu hogar. Agenda, rastrea y paga tus servicios de forma fácil y segura.</p>
+          <button class="register-btn" onclick="window.location.href='../register'">Regístrate</button>
+        </div>
+        <div class="account-visual">
+          <img src="source/young-adult-reusing-fabric-material.jpg" alt="Separador decorativo" />
+        </div>
+      </div>
+    </section>
+
+    <div class="decorative-border"></div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <img src="source/logo.png" alt="Hilo&Huella Logo" />
+      <span>Hilo&Huella</span>
+    </div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </footer>
+  <script src="script.js"></script>
+</body> 
+
+
+</html>
